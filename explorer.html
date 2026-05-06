@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TravelNest | Explorer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <nav class="navbar">
+    <div class="logo">TravelNest</div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="explorer.html" class="active">Explorer</a></li>
+      <li><a href="budget.html">Budget</a></li>
+      <li><a href="generator.html">Trip Generator</a></li>
+      <li><a href="mood.html">Travel Mood</a></li>
+      <li><a href="feedback.html">Feedback</a></li>
+    </ul>
+
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+</header>
+
+<main class="page-wrap">
+  <section class="page-hero">
+    <h1>Explore Destinations</h1>
+    <p>Find your perfect next adventure.</p>
+  </section>
+
+  <section class="filters">
+    <input type="text" id="searchInput" placeholder="Search destination...">
+
+    <select id="continentFilter">
+      <option value="all">All Continents</option>
+      <option value="Asia">Asia</option>
+      <option value="Europe">Europe</option>
+      <option value="Africa">Africa</option>
+      <option value="North America">North America</option>
+    </select>
+  </section>
+
+  <section id="destinationGrid" class="destination-grid"></section>
+</main>
+
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span id="closeModal" class="close-btn">&times;</span>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 TravelNest</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

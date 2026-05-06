@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TravelNest | Budget Planner</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <nav class="navbar">
+    <div class="logo">TravelNest</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="explorer.html">Explorer</a></li>
+      <li><a href="budget.html" class="active">Budget</a></li>
+      <li><a href="generator.html">Trip Generator</a></li>
+      <li><a href="mood.html">Travel Mood</a></li>
+      <li><a href="feedback.html">Feedback</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+</header>
+
+<main class="page-wrap">
+  <section class="page-hero">
+    <h1>Trip Budget Planner</h1>
+    <p>Estimate your travel spending.</p>
+  </section>
+
+  <div class="budget-box">
+    <form id="budgetForm">
+      <select id="budgetDestination" required>
+        <option value="">Choose Destination</option>
+      </select>
+
+      <input type="number" id="days" placeholder="Number of Days" required>
+      <input type="number" id="dailyBudget" placeholder="Daily Budget ($)" required>
+
+      <button type="submit" class="btn">Calculate</button>
+    </form>
+
+    <div id="budgetResult"></div>
+  </div>
+</main>
+
+<footer><p>© 2026 TravelNest</p></footer>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

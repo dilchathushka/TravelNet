@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TravelNest | Explore the World</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="logo">TravelNest</div>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="explorer.html">Explorer</a></li>
+        <li><a href="budget.html">Budget</a></li>
+        <li><a href="generator.html">Trip Generator</a></li>
+        <li><a href="mood.html">Travel Mood</a></li>
+        <li><a href="feedback.html">Feedback</a></li>
+      </ul>
+
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Explore Your Next Adventure</h1>
+        <p id="quote">
+          "Travel is the only thing you buy that makes you richer."
+        </p>
+        <a href="explorer.html" class="btn">Start Exploring</a>
+      </div>
+
+      <div class="hero-image">
+        <img src="pictures/swiss-alps.png" alt="Breathtaking mountain landscape adventure" />
+      </div>
+    </section>
+
+    <section class="destination-day">
+      <h2>Destination of the Day</h2>
+      <div id="dailyDestination" class="daily-card"></div>
+    </section>
+
+    <section class="newsletter">
+      <h2>Subscribe to Newsletter</h2>
+      <form id="newsletterForm">
+        <input type="email" id="newsletterEmail" placeholder="Enter email" required />
+        <button type="submit">Subscribe</button>
+      </form>
+      <p id="newsletterMsg"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 TravelNest. All rights reserved.</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

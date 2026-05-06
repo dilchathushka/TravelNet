@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TravelNest | Travel Mood</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <nav class="navbar">
+    <div class="logo">TravelNest</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="explorer.html">Explorer</a></li>
+      <li><a href="budget.html">Budget</a></li>
+      <li><a href="generator.html">Trip Generator</a></li>
+      <li><a href="mood.html" class="active">Travel Mood</a></li>
+      <li><a href="feedback.html">Feedback</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+</header>
+
+<main class="page-wrap">
+  <section class="page-hero">
+    <h1>Travel Mood</h1>
+    <p>Relax, dream, and plan your next destination.</p>
+  </section>
+
+  <div class="budget-box">
+    <h2>Ambient Sounds</h2>
+    <div class="sound-buttons">
+      <button class="btn" onclick="playSound('beach')">Beach</button>
+      <button class="btn" onclick="playSound('forest')">Forest</button>
+      <button class="btn" onclick="playSound('rain')">Rain</button>
+      <button class="save-btn" onclick="stopSound()">Stop</button>
+    </div>
+
+    <h2 style="margin-top:30px;">Track Destinations</h2>
+    <select id="trackDestination">
+      <option value="">Select Destination</option>
+    </select>
+
+    <div style="display:flex;gap:15px;flex-wrap:wrap;">
+      <button class="btn" onclick="markDestination('visited')">Visited</button>
+      <button class="save-btn" onclick="markDestination('planned')">Planned</button>
+    </div>
+
+    <div id="trackResult"></div>
+  </div>
+
+  <audio id="audioPlayer" loop></audio>
+</main>
+
+<footer><p>© 2026 TravelNest</p></footer>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
