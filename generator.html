@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TravelNest | Random Trip Generator</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="TN.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#0b63f6">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
 </head>
 <body>
 
@@ -26,27 +32,76 @@
 </header>
 
 <main class="page-wrap">
-  <section class="page-hero">
-    <h1>Random Trip Generator</h1>
-    <p>Let TravelNest decide your next trip.</p>
-  </section>
+    <section class="page-hero reveal">
+      <h1>Random Trip Generator</h1>
+      <p>Let TravelNest decide your next adventure.</p>
+    </section>
 
-  <div class="budget-box">
-    <select id="tripType">
-      <option value="all">Any Type</option>
-      <option value="adventure">Adventure</option>
-      <option value="relaxation">Relaxation</option>
-      <option value="cultural">Cultural</option>
-      <option value="nature">Nature</option>
-    </select>
+    <div class="budget-box reveal">
 
-    <button id="generateTrip" class="btn">Surprise Me</button>
+      <!-- Travel Type dropdown -->
+      <label for="tripType" class="form-label">Travel Type</label>
+      <select id="tripType" aria-label="Select travel type">
+        <option value="all">Any Type</option>
+        <option value="adventure">Adventure</option>
+        <option value="relaxation">Relaxation</option>
+        <option value="cultural">Cultural</option>
+        <option value="nature">Nature</option>
+      </select>
 
-    <div id="tripResult"></div>
+      <!-- Budget Range dropdown (FIX #3) -->
+      <label for="budgetRange" class="form-label">Budget Range</label>
+      <select id="budgetRange" aria-label="Select budget range">
+        <option value="all">Any Budget</option>
+        <option value="low">Low (under $50/day)</option>
+        <option value="medium">Medium ($50–$120/day)</option>
+        <option value="high">High (over $120/day)</option>
+      </select>
+
+      <!-- Buttons: Surprise Me + Surprise Me Again (FIX #4) -->
+      <div class="generator-buttons">
+        <button id="generateTrip" class="btn">Surprise Me</button>
+        <button id="generateAgain" class="btn btn-outline" style="display:none;">🔄 Surprise Me Again</button>
+      </div>
+
+      <!-- Wishlist viewer -->
+      <div id="tripResult" role="region" aria-live="polite"></div>
+
+      <!-- Saved Wishlist display -->
+      <div id="wishlistSection" style="display:none;">
+        <h3 style="margin-top:30px; margin-bottom:15px;">My Wishlist</h3>
+        <div id="wishlistDisplay"></div>
+      </div>
+
+      <button id="viewWishlist" class="save-btn" style="margin-top:10px;">View My Wishlist</button>
+    </div>
+  </main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <h3>Navigate TravelNest</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="explorer.html">Explorer</a></li>
+        <li><a href="budget.html">Budget</a></li>
+        <li><a href="generator.html">Trip Generator</a></li>
+        <li><a href="mood.html">Travel Mood</a></li>
+        <li><a href="feedback.html">Feedback</a></li>
+      </ul>
+    </div>
+    <div class="footer-newsletter">
+      <h3>TravelNest Newsletter</h3>
+      <p>Get travel tips & destination deals in your inbox.</p>
+      <form id="footerNewsletterForm">
+        <input type="email" id="footerNewsletterEmail" placeholder="Your email address" required>
+        <button type="submit">Subscribe</button>
+        <p class="footer-newsletter-msg"></p>
+      </form>
+    </div>
   </div>
-</main>
-
-<footer><p>© 2026 TravelNest</p></footer>
+  <p class="footer-copy">© 2026 TravelNest. All rights reserved.</p>
+</footer>
 
 <script src="data.js"></script>
 <script src="script.js"></script>

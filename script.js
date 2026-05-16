@@ -83,22 +83,27 @@ if (dailyBox) {
 
 // --- NEWSLETTER FORM ---
 
-var newsletterForm = document.getElementById("newsletterForm");
-if (newsletterForm) {
-  newsletterForm.onsubmit = function(event) {
+var newsletterForms = document.querySelectorAll("#newsletterForm, #footerNewsletterForm");
+newsletterForms.forEach(function(form) {
+  form.onsubmit = function(event) {
     event.preventDefault(); // Stop page from refreshing
-    var emailInput = document.getElementById("newsletterEmail");
+    var emailInput = form.querySelector("input[type='email']");
+    if (!emailInput) return;
+
     saveToStorage("newsletterEmail", emailInput.value);
-    
-    var msgArea = document.getElementById("newsletterMsg");
+
+    var msgArea = form.querySelector(".footer-newsletter-msg");
+    if (!msgArea) {
+      msgArea = document.getElementById("newsletterMsg");
+    }
     if (msgArea) {
       msgArea.innerHTML = "Subscribed successfully";
-      msgArea.style.color = "green";
+      msgArea.style.color = "#7ee787";
       msgArea.style.marginTop = "15px";
     }
-    newsletterForm.reset();
+    form.reset();
   };
-}
+});
 
 // --- EXPLORER PAGE: LISTING DESTINATIONS ---
 
@@ -283,6 +288,32 @@ function saveWishlist(destName) {
   }
 }
 
+// --- VIEW WISHLIST BUTTON ---
+
+var viewWishlistBtn = document.getElementById("viewWishlist");
+if (viewWishlistBtn) {
+  viewWishlistBtn.onclick = function() {
+    var wishlist = getFromStorage("wishlist");
+    var wishlistSection = document.getElementById("wishlistSection");
+    var wishlistDisplay = document.getElementById("wishlistDisplay");
+    
+    if (!wishlistSection || !wishlistDisplay) return;
+    
+    if (wishlist.length === 0) {
+      wishlistDisplay.innerHTML = "<p style='color:#666;'>Your wishlist is empty. Start adding destinations!</p>";
+    } else {
+      var html = "";
+      for (var i = 0; i < wishlist.length; i++) {
+        html += "<div class='result-card' style='margin-bottom:15px;'><h4>" + wishlist[i] + "</h4></div>";
+      }
+      wishlistDisplay.innerHTML = html;
+    }
+    
+    // Show the wishlist section
+    wishlistSection.style.display = "block";
+  };
+}
+
 // --- MOOD PAGE: AMBIENT SOUNDS ---
 
 populateDestinations("trackDestination");
@@ -292,7 +323,7 @@ function playSound(type) {
   var sounds = {
     beach: "audio/beach-sound.mp3",
     forest: "audio/forest.mp3",
-    rain: "audio/rain-sound.mp3"
+    city: "audio/city_sound.mp3"
   };
   
   if (player) {
@@ -408,3 +439,18 @@ for (var i = 0; i < faqButtons.length; i++) {
     this.parentElement.classList.toggle("active");
   };
 }
+
+// --- SERVICE WORKER REGISTRATION ---
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then((registration) => {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      })
+      .catch((error) => {
+        console.log('ServiceWorker registration failed: ', error);
+      });
+  });
+}
+
